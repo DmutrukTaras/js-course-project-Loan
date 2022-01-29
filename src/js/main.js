@@ -1,3 +1,4 @@
+import VideoPlayer from "./modules/videoPlayer";
 import Slider from "./modules/slider";
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -5,4 +6,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     const slider = new Slider('.page', '.next');
     slider.render();
+
+    const player = new VideoPlayer('.showup .play', '.overlay');
+    player.init();
 });
