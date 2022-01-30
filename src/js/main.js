@@ -1,3 +1,4 @@
+import Difference from "./modules/difference";
 import miniSlider from "./modules/slider/slider-mini";
 import MainSlider from "./modules/slider/slider-main";
 import VideoPlayer from "./modules/videoPlayer";
@@ -10,6 +11,11 @@ window.addEventListener('DOMContentLoaded', function () {
         btns: '.next'
     });
     sliderMain.render();
+
+    new Difference('.officerold', '.officernew', '.officer__card-item').init();
+
+
+
 
     const sliderShowUp = new miniSlider({
         container: '.showup__content-slider',
