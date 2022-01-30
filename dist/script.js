@@ -2776,7 +2776,8 @@ window.addEventListener('DOMContentLoaded', function () {
     btns: '.next'
   });
   sliderMain.render();
-  new _modules_difference__WEBPACK_IMPORTED_MODULE_0__["default"]('.officerold', '.officernew', '.officer__card-item').init();
+  new _modules_difference__WEBPACK_IMPORTED_MODULE_0__["default"]('.officerold', '.officer__card-item').init();
+  new _modules_difference__WEBPACK_IMPORTED_MODULE_0__["default"]('.officernew', '.officer__card-item').init();
   var sliderShowUp = new _modules_slider_slider_mini__WEBPACK_IMPORTED_MODULE_1__["default"]({
     container: '.showup__content-slider',
     prev: '.showup__prev',
@@ -2830,49 +2831,51 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var Difference =
 /*#__PURE__*/
 function () {
-  function Difference(oldOfficer, newOfficer, items) {
+  function Difference(Officer, items) {
     _classCallCheck(this, Difference);
 
-    this.oldOfficer = document.querySelector(oldOfficer);
-    this.newOfficer = document.querySelector(newOfficer);
-    this.oldItems = this.oldOfficer.querySelectorAll(items);
-    this.newItems = this.newOfficer.querySelectorAll(items);
-    this.oldCounter = 0;
-    this.newCounter = 0;
+    this.officer = document.querySelector(Officer);
+    this.items = this.officer.querySelectorAll(items);
+    this.counter = 0;
   }
 
   _createClass(Difference, [{
     key: "bindTrigers",
-    value: function bindTrigers(officer, items, counter) {
-      officer.querySelector('.plus').addEventListener('click', function () {
-        if (counter !== items.length - 2) {
-          items[counter].style.display = 'flex';
-          items[counter].classList.add('animated', 'fadeIn');
-          counter++;
+    value: function bindTrigers() {
+      var _this = this;
+
+      this.officer.querySelector('.plus').addEventListener('click', function () {
+        if (_this.counter !== _this.items.length - 2) {
+          _this.items[_this.counter].style.display = 'flex';
+
+          _this.items[_this.counter].classList.add('animated', 'fadeIn');
+
+          _this.counter++;
         } else {
-          items[counter].style.display = 'flex';
-          items[counter].classList.add('animated', 'fadeIn');
-          items[counter + 1].classList.add('animated', 'fadeOut');
+          _this.items[_this.counter].style.display = 'flex';
+
+          _this.items[_this.counter].classList.add('animated', 'fadeIn');
+
+          _this.items[_this.counter + 1].classList.add('animated', 'fadeOut');
+
           setTimeout(function () {
-            items[counter + 1].remove();
+            _this.items[_this.counter + 1].remove();
           }, 500);
         }
       });
     }
   }, {
     key: "hideElements",
-    value: function hideElements(items) {
-      items.forEach(function (item, i, arr) {
+    value: function hideElements() {
+      this.items.forEach(function (item, i, arr) {
         if (i != arr.length - 1) item.style.display = 'none';
       });
     }
   }, {
     key: "init",
     value: function init() {
-      this.hideElements(this.oldItems);
-      this.hideElements(this.newItems);
-      this.bindTrigers(this.oldOfficer, this.oldItems, this.oldCounter);
-      this.bindTrigers(this.newOfficer, this.newItems, this.newCounter);
+      this.hideElements();
+      this.bindTrigers();
     }
   }]);
 

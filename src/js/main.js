@@ -12,7 +12,8 @@ window.addEventListener('DOMContentLoaded', function () {
     });
     sliderMain.render();
 
-    new Difference('.officerold', '.officernew', '.officer__card-item').init();
+    new Difference('.officerold', '.officer__card-item').init();
+    new Difference('.officernew', '.officer__card-item').init();
 
 
 

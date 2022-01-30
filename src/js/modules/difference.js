@@ -1,45 +1,38 @@
 export default class Difference {
-    constructor(oldOfficer, newOfficer, items) {
-        this.oldOfficer = document.querySelector(oldOfficer);
-        this.newOfficer = document.querySelector(newOfficer);
-        this.oldItems = this.oldOfficer.querySelectorAll(items);
-        this.newItems = this.newOfficer.querySelectorAll(items);
-        this.oldCounter = 0;
-        this.newCounter = 0;
-
+    constructor(Officer, items) {
+        this.officer = document.querySelector(Officer);
+        this.items = this.officer.querySelectorAll(items);
+        this.counter = 0;
     }
 
-    bindTrigers(officer, items, counter) {
-        officer.querySelector('.plus').addEventListener('click', () => {
-            if (counter !== items.length - 2) {
-                items[counter].style.display = 'flex';
-                items[counter].classList.add('animated', 'fadeIn')
-                counter++;
+    bindTrigers() {
+        this.officer.querySelector('.plus').addEventListener('click', () => {
+            if (this.counter !== this.items.length - 2) {
+                this.items[this.counter].style.display = 'flex';
+                this.items[this.counter].classList.add('animated', 'fadeIn')
+                this.counter++;
             } else {
-                items[counter].style.display = 'flex';
-                items[counter].classList.add('animated', 'fadeIn')
-                items[counter + 1].classList.add('animated', 'fadeOut')
+                this.items[this.counter].style.display = 'flex';
+                this.items[this.counter].classList.add('animated', 'fadeIn')
+                this.items[this.counter + 1].classList.add('animated', 'fadeOut')
                 setTimeout(() => {
-                    items[counter + 1].remove();
-                }, 500)
-
+                    this.items[this.counter + 1].remove();
+                }, 500);
             }
 
         });
     }
 
-    hideElements(items) {
-        items.forEach((item, i, arr) => {
+    hideElements() {
+        this.items.forEach((item, i, arr) => {
             if (i != arr.length - 1)
                 item.style.display = 'none';
         });
     }
 
     init() {
-        this.hideElements(this.oldItems);
-        this.hideElements(this.newItems);
-        this.bindTrigers(this.oldOfficer, this.oldItems, this.oldCounter);
-        this.bindTrigers(this.newOfficer, this.newItems, this.newCounter);
+        this.hideElements();
+        this.bindTrigers();
 
     }
 
