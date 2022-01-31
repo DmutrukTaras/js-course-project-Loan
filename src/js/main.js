@@ -1,3 +1,4 @@
+import Form from "./modules/forms";
 import Difference from "./modules/difference";
 import miniSlider from "./modules/slider/slider-mini";
 import MainSlider from "./modules/slider/slider-main";
@@ -11,6 +12,13 @@ window.addEventListener('DOMContentLoaded', function () {
         btns: '.next'
     });
     sliderMain.render();
+
+    new MainSlider({
+        container: '.moduleapp',
+        btns: '.next',
+        prev: '.prevmodule',
+        next: '.nextmodule'
+    }).render();
 
     new Difference('.officerold', '.officer__card-item').init();
     new Difference('.officernew', '.officer__card-item').init();
@@ -46,6 +54,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
     sliderFeed.init();
 
+    new Form('form').init();
 
 
     const player = new VideoPlayer('.showup .play', '.overlay');

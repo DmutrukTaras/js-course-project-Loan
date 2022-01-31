@@ -1,7 +1,9 @@
 export default class Difference {
     constructor(Officer, items) {
         this.officer = document.querySelector(Officer);
-        this.items = this.officer.querySelectorAll(items);
+        try {
+            this.items = this.officer.querySelectorAll(items);
+        } catch (e) {}
         this.counter = 0;
     }
 
@@ -31,8 +33,11 @@ export default class Difference {
     }
 
     init() {
-        this.hideElements();
-        this.bindTrigers();
+        try {
+            this.hideElements();
+            this.bindTrigers();
+        } catch (e) {}
+
 
     }
 

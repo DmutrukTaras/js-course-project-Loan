@@ -8,12 +8,12 @@ export default class miniSlider extends Slider {
 
 
     bindTrigers() {
-        this.next.addEventListener('click', () => {
+        this.next[0].addEventListener('click', () => {
             this.nextSlide();
 
         });
 
-        this.prev.addEventListener('click', () => {
+        this.prev[0].addEventListener('click', () => {
             for (let index = this.slides.length - 1; index > 0; index--) {
                 if (this.slides[index].tagName != 'BUTTON') {
                     let active = this.slides[index];
@@ -70,26 +70,29 @@ export default class miniSlider extends Slider {
     }
 
     init() {
-        this.container.style.cssText = `
-        display: flex;
-        flex-wrap: wrap;
-        overflow: hidden;
-        align-items: flex-start;
-        `;
+        try {
+            this.container.style.cssText = `
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            align-items: flex-start;
+            `;
 
 
-        this.bindTrigers();
-        this.decorizeSlides();
-        if (this.autoplay) {
-            this.activateAnimation();
-
-            this.container.addEventListener('mouseenter', () => {
-                clearInterval(this.paused);
-            });
-            this.container.addEventListener('mouseleave', () => {
+            this.bindTrigers();
+            this.decorizeSlides();
+            if (this.autoplay) {
                 this.activateAnimation();
-            });
-        }
+
+                this.container.addEventListener('mouseenter', () => {
+                    clearInterval(this.paused);
+                });
+                this.container.addEventListener('mouseleave', () => {
+                    this.activateAnimation();
+                });
+            }
+        } catch (e) {}
+
 
     }
 }
