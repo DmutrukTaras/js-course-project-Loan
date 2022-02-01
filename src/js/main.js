@@ -1,3 +1,5 @@
+import Downloads from "./modules/download";
+import ShowInfo from "./modules/showinfo";
 import Form from "./modules/forms";
 import Difference from "./modules/difference";
 import miniSlider from "./modules/slider/slider-mini";
@@ -59,4 +61,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
     new VideoPlayer('.showup .play', '.overlay').init();
     new VideoPlayer('.module__video-item .play', '.overlay').init();
+
+    new ShowInfo('.module__info-show .plus').init();
+
+    new Downloads('.download').init();
+
 });
